@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Tile_ForestPlaceholder
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 21300000, guid: 31b6282c0d7ed6e4682436aabcd8d2ab, type: 3}
-  m_Color: {r: 0.1096034, g: 0.26415092, b: 0.05357778, a: 1}
+  m_Sprite: {fileID: 70345852487738077, guid: 760f7a79314e7204ab2db4384c94e7a8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

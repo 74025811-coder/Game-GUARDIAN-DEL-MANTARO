@@ -4,22 +4,31 @@ using UnityEngine.InputSystem;
 public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] private float detectionRadius = 1.2f;
-    [SerializeField] private LayerMask interactableMask; // opcional, puedes dejarlo en Everything
 
     private WasteItem currentTarget;
 
+    public bool HasTarget => currentTarget != null;
+    public Transform CurrentTargetTransform => currentTarget != null ? currentTarget.transform : null;
+    public float CurrentProgress01 => currentTarget != null ? currentTarget.Progress01 : 0f;
+
     private void Update()
     {
-        DetectNearbyWaste();
+        WasteItem detected = DetectNearest();
+
+        // Si cambiaste de objetivo (o te alejaste de todos), resetea el progreso del anterior
+        if (detected != currentTarget)
+        {
+            currentTarget?.ResetProgress();
+            currentTarget = detected;
+        }
 
         if (currentTarget != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            currentTarget.Collect();
-            currentTarget = null;
+            currentTarget.RegisterPress();
         }
     }
 
-    private void DetectNearbyWaste()
+    private WasteItem DetectNearest()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
 
@@ -40,10 +49,6 @@ public class PlayerInteractor : MonoBehaviour
             }
         }
 
-        currentTarget = closest;
+        return closest;
     }
-
-    // Lo usaremos para mostrar/ocultar el texto "[E] Recoger"
-    public bool HasTarget => currentTarget != null;
-    public Transform CurrentTargetTransform => currentTarget != null ? currentTarget.transform : null;
 }

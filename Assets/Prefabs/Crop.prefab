@@ -104,8 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078e3ed5e1cc8094bb24d5656d5045d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CropController
-  wiltedColor: {r: 0.55, g: 0.4, b: 0.2, a: 1}
+  wiltedColor: {r: 0.754717, g: 0.75072294, b: 0.2242791, a: 1}
   healthyColor: {r: 0.1, g: 0.55, b: 0.15, a: 1}
-  startHealth: 1
-  pollutionThreshold: 0.5
-  changeSpeed: 0.03
+  smoothSpeed: 0.5
