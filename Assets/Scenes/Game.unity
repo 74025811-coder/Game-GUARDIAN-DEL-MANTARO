@@ -69151,7 +69151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4734373d3d5ee8243bed94b0a4b768e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimeManager
-  timeLimitSeconds: 1200
+  timeLimitSeconds: 600
 --- !u!4 &1494568035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4950207797613010372, guid: 08ef68ca93deb794394860ab28a495cd, type: 3}
@@ -72118,7 +72118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1870519784
 RectTransform:
   m_ObjectHideFlags: 0
