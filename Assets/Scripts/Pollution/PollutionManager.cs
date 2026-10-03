@@ -18,10 +18,11 @@ public class PollutionManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    // Se llama cada vez que llega una oleada nueva (incluida la primera).
+    // Toma TODOS los residuos activos en ese momento (los sobrantes + los nuevos) como el 100% de esa etapa.
+    public void RecalculateBaseline()
     {
-        // Cuenta todos los residuos que existen en la escena al iniciar
-        totalWaste = FindObjectsByType<WasteItem>(FindObjectsSortMode.None).Length;
+        totalWaste = WasteItem.Active.Count;
         remainingWaste = totalWaste;
         OnPollutionChanged?.Invoke(PollutionPercentage);
     }
