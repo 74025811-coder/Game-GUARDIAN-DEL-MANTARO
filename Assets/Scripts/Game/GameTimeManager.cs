@@ -9,6 +9,7 @@ public class GameTimeManager : MonoBehaviour
 
     private float timeRemaining;
     private bool gameEnded;
+    private WasteSpawner spawner; // Referencia añadida para comprobar las oleadas
 
     public event Action<float> OnTimeChanged;
     public event Action OnVictory;
@@ -22,7 +23,8 @@ public class GameTimeManager : MonoBehaviour
 
     private void Start()
     {
-        PollutionManager.Instance.OnPollutionCleared += HandleVictory;
+        spawner = FindFirstObjectByType<WasteSpawner>();
+        PollutionManager.Instance.OnPollutionCleared += HandlePollutionCleared;
     }
 
     private void Update()
@@ -56,6 +58,19 @@ public class GameTimeManager : MonoBehaviour
         }
     }
 
+    private void HandlePollutionCleared()
+    {
+        if (gameEnded) return;
+
+        // Verifica si ya no quedan más oleadas antes de declarar la victoria
+        bool isLastWave = spawner == null || spawner.CurrentWave >= spawner.TotalWaves;
+        if (isLastWave)
+        {
+            HandleVictory();
+        }
+        // Si no es la última oleada, no pasa nada y el juego continúa.
+    }
+
     private void HandleVictory()
     {
         if (gameEnded) return;
@@ -74,7 +89,7 @@ public class GameTimeManager : MonoBehaviour
     {
         if (PollutionManager.Instance != null)
         {
-            PollutionManager.Instance.OnPollutionCleared -= HandleVictory;
+            PollutionManager.Instance.OnPollutionCleared -= HandlePollutionCleared;
         }
     }
 }

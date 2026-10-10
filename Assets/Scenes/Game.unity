@@ -55924,7 +55924,7 @@ MonoBehaviour:
   waterTile: {fileID: 11400000, guid: acd5988d8654a2944a39760efe1536c6, type: 2}
   wasteItemPrefab: {fileID: 3551460061044256353, guid: 2b3db463376bdf043a30a5bdce77b243, type: 3}
   wavesCount: 4
-  itemsPerWave: 10
+  itemsPerWave: 5
   waveInterval: 60
   warningLeadTime: 8
 --- !u!4 &450049604
